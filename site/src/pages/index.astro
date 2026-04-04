@@ -76,8 +76,8 @@ const buildPaths = [
 	},
 	{
 		key: 'ai',
-		title: 'Build with AI',
-		copy: 'Use AI agents to generate and configure APIEase systems, from simple integrations to full automation workflows.',
+		title: 'Build with AI assistance',
+		copy: 'Use AI agents to assist, generate, and configure APIEase systems, whether working alongside you in development or operating autonomously.',
 	},
 ];
 ---
@@ -344,14 +344,20 @@ const buildPaths = [
 	}
 
 	.card-copy {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		gap: 10px;
 	}
 
 	.card-heading {
-		display: flex;
+		display: grid;
+		grid-template-columns: 36px minmax(0, 1fr);
 		align-items: center;
 		gap: 12px;
+	}
+
+	.card-heading h3 {
+		margin: 0;
 	}
 
 	.capabilities-note {
