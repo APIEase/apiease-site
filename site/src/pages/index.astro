@@ -118,22 +118,24 @@ const buildPaths = [
 							<div class="capabilities">
 								{group.items.map((item) => (
 									<div class="card">
-										<div class={`icon icon-${group.key}`}>
-											{group.key === 'requests' ? (
-												<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
-													<path d="M4 11h9V8l7 4-7 4v-3H4z" fill="currentColor" />
-												</svg>
-											) : (
-												<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
-													<rect x="4" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
-													<rect x="13" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
-													<rect x="4" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
-													<rect x="13" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
-												</svg>
-											)}
-										</div>
-										<div>
-											<h3>{item.title}</h3>
+										<div class="card-copy">
+											<div class="card-heading">
+												<div class={`icon icon-${group.key}`}>
+													{group.key === 'requests' ? (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<path d="M4 11h9V8l7 4-7 4v-3H4z" fill="currentColor" />
+														</svg>
+													) : (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<rect x="4" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
+															<rect x="13" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
+															<rect x="4" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
+															<rect x="13" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
+														</svg>
+													)}
+												</div>
+												<h3>{item.title}</h3>
+											</div>
 											<p>{item.copy}</p>
 										</div>
 									</div>
@@ -187,30 +189,32 @@ const buildPaths = [
 				<div class="build-path-grid">
 					{buildPaths.map((path) => (
 						<div class={`build-path-card build-path-card-${path.key}`}>
-							<div class="build-path-icon">
-								{path.key === 'admin' ? (
-									<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
-										<rect x="4" y="5" width="16" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
-										<path d="M4 10h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-										<circle cx="8" cy="7.5" r="1" fill="currentColor" />
-										<circle cx="11" cy="7.5" r="1" fill="currentColor" />
-										<path d="M8 14h4m-4 3h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-									</svg>
-								) : path.key === 'cli' ? (
-									<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
-										<rect x="3.5" y="5" width="17" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
-										<path d="m8 10 3 2-3 2m5 0h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-									</svg>
-								) : (
-									<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
-										<path d="M12 3.5 13.9 8l4.6.4-3.5 3 1.1 4.5-4.1-2.5-4.1 2.5 1.1-4.5-3.5-3L10.1 8Z" fill="currentColor" />
-										<circle cx="18.5" cy="6" r="1.5" fill="currentColor" opacity="0.8" />
-										<circle cx="6" cy="17.5" r="1.2" fill="currentColor" opacity="0.8" />
-									</svg>
-								)}
-							</div>
 							<div class="build-path-copy">
-								<h3>{path.title}</h3>
+								<div class="build-path-heading">
+									<div class="build-path-icon">
+										{path.key === 'admin' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<rect x="4" y="5" width="16" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+												<path d="M4 10h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+												<circle cx="8" cy="7.5" r="1" fill="currentColor" />
+												<circle cx="11" cy="7.5" r="1" fill="currentColor" />
+												<path d="M8 14h4m-4 3h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+											</svg>
+										) : path.key === 'cli' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<rect x="3.5" y="5" width="17" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+												<path d="m8 10 3 2-3 2m5 0h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										) : (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<path d="M12 3.5 13.9 8l4.6.4-3.5 3 1.1 4.5-4.1-2.5-4.1 2.5 1.1-4.5-3.5-3L10.1 8Z" fill="currentColor" />
+												<circle cx="18.5" cy="6" r="1.5" fill="currentColor" opacity="0.8" />
+												<circle cx="6" cy="17.5" r="1.2" fill="currentColor" opacity="0.8" />
+											</svg>
+										)}
+									</div>
+									<h3>{path.title}</h3>
+								</div>
 								<p>{path.copy}</p>
 							</div>
 						</div>
@@ -336,7 +340,17 @@ const buildPaths = [
 		border-radius: 16px;
 		background: rgba(255, 255, 255, 0.02);
 		border: 1px solid var(--border);
+		display: block;
+	}
+
+	.card-copy {
+		display: grid;
+		gap: 10px;
+	}
+
+	.card-heading {
 		display: flex;
+		align-items: center;
 		gap: 12px;
 	}
 
@@ -412,6 +426,12 @@ const buildPaths = [
 	.build-path-copy {
 		display: grid;
 		gap: 8px;
+	}
+
+	.build-path-heading {
+		display: flex;
+		align-items: center;
+		gap: 12px;
 	}
 
 	.build-path-copy h3 {
