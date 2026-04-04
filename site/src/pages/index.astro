@@ -8,7 +8,7 @@ const capabilityGroups = [
 	{
 		key: 'requests',
 		title: 'Requests',
-		icon: '→',
+		note: 'All requests and logic run server side, with API keys and sensitive data kept secure and never exposed to the storefront or external callers.',
 		items: [
 			{
 				title: 'HTTP Requests',
@@ -31,7 +31,6 @@ const capabilityGroups = [
 	{
 		key: 'components',
 		title: 'Components',
-		icon: '◫',
 		items: [
 			{
 				title: 'Widgets',
@@ -102,7 +101,18 @@ const steps = [
 								{group.items.map((item) => (
 									<div class="card">
 										<div class={`icon icon-${group.key}`}>
-											<span>{group.icon}</span>
+											{group.key === 'requests' ? (
+												<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+													<path d="M4 11h9V8l7 4-7 4v-3H4z" fill="currentColor" />
+												</svg>
+											) : (
+												<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+													<rect x="4" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
+													<rect x="13" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
+													<rect x="4" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
+													<rect x="13" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
+												</svg>
+											)}
 										</div>
 										<div>
 											<h3>{item.title}</h3>
@@ -111,13 +121,10 @@ const steps = [
 									</div>
 								))}
 							</div>
+							{group.note && <p class="capabilities-note">{group.note}</p>}
 						</div>
 					))}
 				</div>
-				<p class="capabilities-note">
-					All requests and logic run server side, with API keys and sensitive data kept
-					secure and never exposed to the storefront or external callers.
-				</p>
 			</section>
 
 			<section id="workflow" class="panel steps">
@@ -275,14 +282,22 @@ const steps = [
 	}
 
 	.icon {
-		width: 32px;
-		height: 32px;
+		width: 36px;
+		height: 36px;
 		border-radius: 10px;
 		background: linear-gradient(135deg, var(--primary), var(--accent-3));
 		display: grid;
 		place-items: center;
-		color: #031021;
+		color: #f6f8ff;
 		font-weight: 700;
+		flex-shrink: 0;
+		box-shadow: 0 8px 18px rgba(36, 149, 219, 0.18);
+	}
+
+	.icon-svg {
+		width: 20px;
+		height: 20px;
+		display: block;
 	}
 
 	h3 {
