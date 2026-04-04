@@ -50,16 +50,16 @@ const capabilityGroups = [
 
 const steps = [
 	{
-		title: 'Define the request',
-		copy: 'Choose HTTP, Flow, or Liquid; add inputs, map confidential parameters, and chain follow-up calls.',
+		title: 'Define your system',
+		copy: 'Create requests, widgets, functions, and variables that define how your integrations and workflows should behave.',
 	},
 	{
 		title: 'Trigger from any source',
-		copy: 'Run the same definition from webhooks, schedules, proxy endpoints, the storefront app proxy, remote clients, or manually.',
+		copy: 'Run the same system from webhooks, schedules, proxy endpoints, storefront calls, Shopify Flow, remote clients, or manually.',
 	},
 	{
-		title: 'APIEase executes and returns',
-		copy: 'The managed runtime injects secrets at execution, handles concurrency and tracking, and responds to the caller.',
+		title: 'APIEase runs and responds',
+		copy: 'The managed runtime executes your logic server side, injects secure parameters, handles concurrency and tracking, and returns results to the caller.',
 	},
 ];
 ---
@@ -131,7 +131,7 @@ const steps = [
 				<div class="panel-heading">
 					<div class="kicker">How it works</div>
 					<h2>Define once. Trigger anywhere.</h2>
-					<p>Configure requests in the admin and run them wherever they're needed without shipping a new backend each time.</p>
+					<p>Configure your integrations, workflows, and storefront logic once. APIEase runs them wherever they&rsquo;re needed without building a new backend each time.</p>
 				</div>
 				<div class="step-grid">
 					{steps.map((step, index) => (
@@ -148,7 +148,7 @@ const steps = [
 						<span class="tag">Webhooks</span>
 						<span class="tag">Schedules</span>
 						<span class="tag">Proxy endpoints</span>
-						<span class="tag">Storefront app proxy</span>
+						<span class="tag">Storefront calls</span>
 						<span class="tag">Shopify Flow</span>
 						<span class="tag">Remote clients</span>
 						<span class="tag">Manual runs</span>
