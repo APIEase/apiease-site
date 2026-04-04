@@ -4,22 +4,48 @@ import Backdrop from '../components/Backdrop.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const capabilities = [
+const capabilityGroups = [
 	{
-		title: 'HTTP Requests',
-		copy: 'Call any API with server-side headers, bodies, and secure tokens handled by APIEase.',
+		key: 'requests',
+		title: 'Requests',
+		icon: '→',
+		items: [
+			{
+				title: 'HTTP Requests',
+				copy: 'Call external APIs with server side execution, including headers, bodies, and secure credentials handled by APIEase.',
+			},
+			{
+				title: 'Flow Requests',
+				copy: 'Trigger Shopify Flow from APIEase and pass structured data into workflows for downstream logic and actions.',
+			},
+			{
+				title: 'Liquid Requests',
+				copy: 'Orchestrate multiple requests and transform data using Liquid that runs inside APIEase.',
+			},
+			{
+				title: 'System Requests',
+				copy: 'Run internal APIEase operations such as managing variables and system state without calling external APIs.',
+			},
+		],
 	},
 	{
-		title: 'Flow Requests',
-		copy: 'Let Shopify Flow trigger server-side logic and return structured outputs for downstream steps.',
-	},
-	{
-		title: 'Liquid Requests',
-		copy: 'Transform payloads or build dynamic request bodies with Liquid that runs inside APIEase.',
-	},
-	{
-		title: 'Secure parameters',
-		copy: 'Keep API keys and secrets on the server; storefronts and callers never see confidential values.',
+		key: 'components',
+		title: 'Components',
+		icon: '◫',
+		items: [
+			{
+				title: 'Widgets',
+				copy: 'Render dynamic storefront components powered by APIEase requests without exposing backend logic or credentials.',
+			},
+			{
+				title: 'Functions',
+				copy: 'Reuse modular Liquid logic across requests to simplify complex workflows and storefront processes.',
+			},
+			{
+				title: 'Variables',
+				copy: 'Store persistent values used across requests and workflows, including sensitive backend only data.',
+			},
+		],
 	},
 ];
 
@@ -47,32 +73,51 @@ const steps = [
 
 		<main>
 			<section class="hero">
-				<h1>The API Integration And Automation Platform</h1>
+				<h1>The API Integration And Automation Runtime</h1>
 				<p class="lede">
-					APIEase is a managed system where your API requests, workflows, and custom logic
-					run, so you don’t have to build or maintain that infrastructure yourself.
+					Build and run API integrations, workflows, and storefront logic automatically,
+					without building or maintaining a backend.
 				</p>
 			</section>
 
 			<section id="product" class="panel">
 				<div class="panel-heading">
 					<div class="kicker">What it does</div>
-					<h2>One place to run your API and automation work</h2>
-					<p>APIEase executes HTTP, Flow, and Liquid requests in a managed runtime, so your logic is reusable and secure.</p>
+					<h2>Define your integrations once. APIEase runs them automatically.</h2>
+					<p>APIEase executes HTTP, Flow, Liquid, and System requests in a managed
+						runtime, so the logic you define is reusable, secure, and runs
+						automatically across your integrations and workflows.
+					</p>
+					<br/>
+					<p>
+						Combine requests with widgets, functions, and variables to build
+						systems that connect your storefront, external APIs, and backend processes.
+					</p>
 				</div>
-				<div class="capabilities">
-					{capabilities.map((item) => (
-						<div class="card">
-							<div class="icon">
-								<span>•</span>
-							</div>
-							<div>
-								<h3>{item.title}</h3>
-								<p>{item.copy}</p>
+				<div class="capability-groups">
+					{capabilityGroups.map((group) => (
+						<div class={`capability-group capability-group-${group.key}`}>
+							<div class="group-title">{group.title}</div>
+							<div class="capabilities">
+								{group.items.map((item) => (
+									<div class="card">
+										<div class={`icon icon-${group.key}`}>
+											<span>{group.icon}</span>
+										</div>
+										<div>
+											<h3>{item.title}</h3>
+											<p>{item.copy}</p>
+										</div>
+									</div>
+								))}
 							</div>
 						</div>
 					))}
 				</div>
+				<p class="capabilities-note">
+					All requests and logic run server side, with API keys and sensitive data kept
+					secure and never exposed to the storefront or external callers.
+				</p>
 			</section>
 
 			<section id="workflow" class="panel steps">
@@ -185,11 +230,33 @@ const steps = [
 		margin: 0;
 	}
 
+	.capability-groups {
+		display: grid;
+		gap: 24px;
+		margin-top: 24px;
+	}
+
+	.capability-group {
+		display: grid;
+		gap: 12px;
+		padding: 18px;
+		border-radius: 18px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		background: rgba(255, 255, 255, 0.015);
+	}
+
+	.group-title {
+		font-size: 13px;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--primary);
+	}
+
 	.capabilities {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 		gap: 16px;
-		margin-top: 24px;
 	}
 
 	.capabilities .card {
@@ -199,6 +266,12 @@ const steps = [
 		border: 1px solid var(--border);
 		display: flex;
 		gap: 12px;
+	}
+
+	.capabilities-note {
+		margin-top: 18px;
+		max-width: 760px;
+		color: #c6d4f0;
 	}
 
 	.icon {
@@ -332,18 +405,32 @@ const steps = [
 			margin-top: 70px;
 		}
 
+		.capabilities {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
 		.testimonial {
 			grid-template-columns: 1fr;
 		}
 	}
 
 	@media (max-width: 640px) {
+		.capabilities {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
 		h1 {
 			font-size: 36px;
 		}
 
 		.panel {
 			padding: 18px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.capabilities {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>
