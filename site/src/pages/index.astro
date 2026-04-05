@@ -13,18 +13,22 @@ const capabilityGroups = [
 			{
 				title: 'HTTP Requests',
 				copy: 'Call external APIs with server side execution, including headers, bodies, and secure credentials handled by APIEase.',
+				href: 'https://docs.apiease.com/docs/requests/request-types/http-requests',
 			},
 			{
 				title: 'Flow Requests',
 				copy: 'Trigger Shopify Flow from APIEase and pass structured data into workflows for downstream logic and actions.',
+				href: 'https://docs.apiease.com/docs/requests/request-types/flow-requests',
 			},
 			{
 				title: 'Liquid Requests',
 				copy: 'Orchestrate multiple requests and transform data using Liquid that runs inside APIEase.',
+				href: 'https://docs.apiease.com/docs/requests/request-types/liquid-requests',
 			},
 			{
 				title: 'System Requests',
 				copy: 'Run internal APIEase operations such as managing variables and system state without calling external APIs.',
+				href: 'https://docs.apiease.com/docs/requests/request-types/system-requests',
 			},
 		],
 	},
@@ -35,14 +39,17 @@ const capabilityGroups = [
 			{
 				title: 'Widgets',
 				copy: 'Render dynamic storefront components powered by APIEase requests without exposing backend logic or credentials.',
+				href: 'https://docs.apiease.com/docs/widgets/widgets-overview',
 			},
 			{
 				title: 'Functions',
 				copy: 'Reuse modular Liquid logic across requests to simplify complex workflows and storefront processes.',
+				href: 'https://docs.apiease.com/docs/functions/functions-overview',
 			},
 			{
 				title: 'Variables',
 				copy: 'Store persistent values used across requests and workflows, including sensitive backend only data.',
+				href: 'https://docs.apiease.com/docs/variables/variables-overview',
 			},
 		],
 	},
@@ -68,16 +75,19 @@ const buildPaths = [
 		key: 'admin',
 		title: 'Build in the admin',
 		copy: 'Create and manage requests, widgets, functions, and variables directly in APIEase with a guided interface.',
+		href: 'https://docs.apiease.com/docs/overview/apiease',
 	},
 	{
 		key: 'cli',
 		title: 'Develop locally',
 		copy: 'Use apiease-cli and templates to define systems as code, version them, and push them to APIEase.',
+		href: 'https://docs.apiease.com/docs/developers/quickstart-with-apiease-template',
 	},
 	{
 		key: 'ai',
 		title: 'Build with AI assistance',
 		copy: 'Use AI agents to assist, generate, and configure APIEase systems, whether working alongside you in development or operating autonomously.',
+		href: 'https://docs.apiease.com/docs/developers/using-apiease-with-ai-agents',
 	},
 ];
 
@@ -152,7 +162,13 @@ const useCases = [
 								{group.items.map((item) => (
 									<div class="card">
 										<div class="card-copy">
-											<div class="card-heading">
+											<a
+												class="card-link"
+												href={item.href}
+												target="_blank"
+												rel="noreferrer"
+												aria-label={`View ${item.title} documentation`}
+											>
 												<div class={`icon icon-${group.key}`}>
 													{group.key === 'requests' ? (
 														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
@@ -168,7 +184,7 @@ const useCases = [
 													)}
 												</div>
 												<h3>{item.title}</h3>
-											</div>
+											</a>
 											<p>{item.copy}</p>
 										</div>
 									</div>
@@ -223,7 +239,13 @@ const useCases = [
 					{buildPaths.map((path) => (
 						<div class={`build-path-card build-path-card-${path.key}`}>
 							<div class="build-path-copy">
-								<div class="build-path-heading">
+								<a
+									class="build-path-link"
+									href={path.href}
+									target="_blank"
+									rel="noreferrer"
+									aria-label={`View ${path.title} documentation`}
+								>
 									<div class="build-path-icon">
 										{path.key === 'admin' ? (
 											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
@@ -247,7 +269,7 @@ const useCases = [
 										)}
 									</div>
 									<h3>{path.title}</h3>
-								</div>
+								</a>
 								<p>{path.copy}</p>
 							</div>
 						</div>
@@ -474,14 +496,29 @@ const useCases = [
 		gap: 10px;
 	}
 
-	.card-heading {
+	.card-link {
 		display: grid;
 		grid-template-columns: 36px minmax(0, 1fr);
 		align-items: center;
 		gap: 12px;
+		width: fit-content;
+		padding: 8px 10px;
+		margin: -8px -10px 0;
+		border-radius: 14px;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		background: rgba(255, 255, 255, 0.02);
+		color: #f6f8ff;
+		text-decoration: none;
+		cursor: pointer;
+		transition:
+			background 0.18s ease,
+			color 0.18s ease,
+			box-shadow 0.18s ease,
+			transform 0.18s ease,
+			border-color 0.18s ease;
 	}
 
-	.card-heading h3 {
+	.card-link h3 {
 		margin: 0;
 	}
 
@@ -559,10 +596,25 @@ const useCases = [
 		gap: 8px;
 	}
 
-	.build-path-heading {
+	.build-path-link {
 		display: flex;
 		align-items: center;
 		gap: 12px;
+		width: fit-content;
+		padding: 8px 10px;
+		margin: -8px -10px 0;
+		border-radius: 14px;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		background: rgba(255, 255, 255, 0.02);
+		color: #f6f8ff;
+		text-decoration: none;
+		cursor: pointer;
+		transition:
+			background 0.18s ease,
+			color 0.18s ease,
+			box-shadow 0.18s ease,
+			transform 0.18s ease,
+			border-color 0.18s ease;
 	}
 
 	.build-path-copy h3 {
@@ -571,6 +623,34 @@ const useCases = [
 
 	.build-path-copy p {
 		color: #c6d4f0;
+	}
+
+	.card-link:hover,
+	.build-path-link:hover {
+		color: #ffffff;
+		background: rgba(255, 255, 255, 0.04);
+		border-color: rgba(255, 255, 255, 0.12);
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+		transform: translateY(-1px);
+	}
+
+	.card-link:focus-visible,
+	.build-path-link:focus-visible {
+		outline: none;
+		color: #ffffff;
+		background: rgba(255, 255, 255, 0.045);
+		border-color: rgba(255, 255, 255, 0.14);
+		box-shadow:
+			0 10px 24px rgba(0, 0, 0, 0.18),
+			0 0 0 1px rgba(255, 255, 255, 0.12),
+			0 0 0 3px rgba(36, 149, 219, 0.26);
+	}
+
+	.card-link:focus-visible .icon,
+	.build-path-link:focus-visible .build-path-icon,
+	.card-link:hover .icon,
+	.build-path-link:hover .build-path-icon {
+		filter: brightness(1.08);
 	}
 
 	@media (hover: hover) {
