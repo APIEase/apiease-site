@@ -316,6 +316,37 @@ const useCases = [
 					<span>From simple integrations to fully automated systems, APIEase runs everything in one place.</span>
 				</div>
 			</section>
+
+			<section id="get-started" class="panel cta-panel">
+				<div class="cta-panel-inner">
+					<div class="kicker">Get started</div>
+					<h2>Build the system. APIEase runs it.</h2>
+					<p>
+						Create API integrations, workflows, and storefront systems without
+						building or maintaining a custom backend. Start in the admin, develop
+						locally, or work with AI to define what runs.
+					</p>
+					<div class="cta-panel-actions">
+						<a
+							class="pill primary"
+							href="https://apps.shopify.com/apiease-admin"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Install APIEase
+						</a>
+						<a
+							class="pill ghost"
+							href="https://docs.apiease.com/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							View Documentation
+						</a>
+					</div>
+					<div class="cta-panel-note">Define once. Trigger anywhere.</div>
+				</div>
+			</section>
 		</main>
 
 		<Footer />
@@ -597,6 +628,31 @@ const useCases = [
 		text-align: center;
 	}
 
+	.cta-panel {
+		padding: 34px 26px;
+	}
+
+	.cta-panel-inner {
+		max-width: 760px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.cta-panel-actions {
+		display: flex;
+		justify-content: center;
+		gap: 12px;
+		flex-wrap: wrap;
+		margin-top: 24px;
+	}
+
+	.cta-panel-note {
+		margin-top: 18px;
+		color: #dce5f5;
+		font-weight: 600;
+		font-size: 15px;
+	}
+
 	.step-card {
 		padding: 18px;
 		border-radius: 16px;
@@ -734,6 +790,10 @@ const useCases = [
 		.use-case-card {
 			padding: 18px;
 			min-height: auto;
+		}
+
+		.cta-panel {
+			padding: 24px 18px;
 		}
 
 		h1 {
