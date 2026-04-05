@@ -80,6 +80,39 @@ const buildPaths = [
 		copy: 'Use AI agents to assist, generate, and configure APIEase systems, whether working alongside you in development or operating autonomously.',
 	},
 ];
+
+const useCases = [
+	{
+		key: 'storefront',
+		title: 'Dynamic storefront experiences',
+		copy: 'Display real time data from external APIs directly in your storefront using widgets powered by APIEase requests.',
+	},
+	{
+		key: 'sync',
+		title: 'Inventory and data synchronization',
+		copy: 'Sync products, inventory, and data between Shopify and external systems using scheduled or event driven workflows.',
+	},
+	{
+		key: 'integrations',
+		title: 'External system integrations',
+		copy: 'Connect your store to ERPs, CRMs, and third party services by orchestrating API calls and transforming data with Liquid.',
+	},
+	{
+		key: 'automation',
+		title: 'Automated workflows',
+		copy: 'Trigger multi step processes from webhooks, Shopify Flow, or storefront actions to automate complex business logic.',
+	},
+	{
+		key: 'security',
+		title: 'Secure API access from the storefront',
+		copy: 'Call external APIs from your storefront without exposing API keys by routing requests through APIEase.',
+	},
+	{
+		key: 'ai',
+		title: 'AI assisted system creation',
+		copy: 'Use AI agents to design and configure integrations and workflows that run automatically in APIEase.',
+	},
+];
 ---
 
 <Layout>
@@ -222,6 +255,65 @@ const buildPaths = [
 				</div>
 				<div class="build-path-footer">
 					<span>No matter how you build it, APIEase runs it.</span>
+				</div>
+			</section>
+
+			<section id="use-cases" class="panel use-cases">
+				<div class="panel-heading">
+					<div class="kicker">Use cases</div>
+					<h2>Build systems that connect your store to anything</h2>
+					<p>
+						From storefront experiences to backend automation, APIEase lets you build
+						systems that integrate external APIs, Shopify data, and your own business
+						logic.
+					</p>
+				</div>
+				<div class="use-case-grid">
+					{useCases.map((item) => (
+						<div class="use-case-card">
+							<div class="use-case-copy">
+								<div class="use-case-heading">
+									<div class="use-case-icon">
+										{item.key === 'storefront' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<rect x="4" y="5" width="16" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+												<path d="M8 9h8M8 13h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+											</svg>
+										) : item.key === 'sync' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<path d="M7 7h9l-2-2m2 2-2 2M17 17H8l2 2m-2-2 2-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										) : item.key === 'integrations' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<circle cx="7" cy="12" r="2.5" fill="currentColor" />
+												<circle cx="17" cy="7" r="2.5" fill="currentColor" />
+												<circle cx="17" cy="17" r="2.5" fill="currentColor" />
+												<path d="M9.4 10.8 14.6 8.2M9.4 13.2l5.2 2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+											</svg>
+										) : item.key === 'automation' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<path d="M6 6h12v4H6zm0 8h5v4H6zm7 0h5v4h-5z" fill="currentColor" />
+											</svg>
+										) : item.key === 'security' ? (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<path d="M12 3 5 6v5c0 4.4 2.9 8.4 7 10 4.1-1.6 7-5.6 7-10V6z" fill="currentColor" />
+												<path d="M10 12.5 11.5 14 14.5 11" fill="none" stroke="#0f1422" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										) : (
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+												<path d="M12 3.5 13.9 8l4.6.4-3.5 3 1.1 4.5-4.1-2.5-4.1 2.5 1.1-4.5-3.5-3L10.1 8Z" fill="currentColor" />
+											</svg>
+										)}
+									</div>
+									<h3>{item.title}</h3>
+								</div>
+								<p>{item.copy}</p>
+							</div>
+						</div>
+					))}
+				</div>
+				<div class="use-case-footer">
+					<span>From simple integrations to fully automated systems, APIEase runs everything in one place.</span>
 				</div>
 			</section>
 		</main>
@@ -477,6 +569,82 @@ const buildPaths = [
 		text-align: center;
 	}
 
+	.use-case-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 20px;
+		margin-top: 28px;
+	}
+
+	.use-case-card {
+		padding: 22px;
+		border-radius: 18px;
+		border: 1px solid var(--border);
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+			rgba(255, 255, 255, 0.02);
+		display: grid;
+		min-height: 220px;
+		transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+	}
+
+	.use-case-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.use-case-heading {
+		display: grid;
+		grid-template-columns: 44px minmax(0, 1fr);
+		align-items: center;
+		gap: 12px;
+	}
+
+	.use-case-heading h3 {
+		margin: 0;
+	}
+
+	.use-case-icon {
+		width: 44px;
+		height: 44px;
+		border-radius: 12px;
+		background: linear-gradient(135deg, var(--primary), var(--accent-3));
+		display: grid;
+		place-items: center;
+		color: #f6f8ff;
+		box-shadow: 0 10px 24px rgba(36, 149, 219, 0.22);
+	}
+
+	.use-case-footer {
+		margin-top: 28px;
+		padding-top: 8px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.use-case-footer span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 18px;
+		border-radius: 999px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		background: rgba(255, 255, 255, 0.025);
+		font-size: 17px;
+		font-weight: 700;
+		color: #f6f8ff;
+		text-align: center;
+	}
+
+	@media (hover: hover) {
+		.use-case-card:hover {
+			transform: translateY(-2px);
+			border-color: rgba(255, 255, 255, 0.16);
+			box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+		}
+	}
+
 	.step-card {
 		padding: 18px;
 		border-radius: 16px;
@@ -592,6 +760,10 @@ const buildPaths = [
 			grid-template-columns: 1fr;
 		}
 
+		.use-case-grid {
+			grid-template-columns: 1fr;
+		}
+
 		.testimonial {
 			grid-template-columns: 1fr;
 		}
@@ -603,6 +775,11 @@ const buildPaths = [
 		}
 
 		.build-path-card {
+			padding: 18px;
+			min-height: auto;
+		}
+
+		.use-case-card {
 			padding: 18px;
 			min-height: auto;
 		}
