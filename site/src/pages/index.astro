@@ -11,21 +11,25 @@ const capabilityGroups = [
 		note: 'All requests and logic run server side, with API keys and sensitive data kept secure and never exposed to the storefront or external callers.',
 		items: [
 			{
+				key: 'http',
 				title: 'HTTP Requests',
 				copy: 'Call external APIs with server side execution, including headers, bodies, and secure credentials handled by APIEase.',
 				href: 'https://docs.apiease.com/docs/requests/request-types/http-requests',
 			},
 			{
+				key: 'flow',
 				title: 'Flow Requests',
 				copy: 'Trigger Shopify Flow from APIEase and pass structured data into workflows for downstream logic and actions.',
 				href: 'https://docs.apiease.com/docs/requests/request-types/flow-requests',
 			},
 			{
+				key: 'liquid',
 				title: 'Liquid Requests',
 				copy: 'Orchestrate multiple requests and transform data using Liquid that runs inside APIEase.',
 				href: 'https://docs.apiease.com/docs/requests/request-types/liquid-requests',
 			},
 			{
+				key: 'system',
 				title: 'System Requests',
 				copy: 'Run internal APIEase operations such as managing variables and system state without calling external APIs.',
 				href: 'https://docs.apiease.com/docs/requests/request-types/system-requests',
@@ -37,16 +41,19 @@ const capabilityGroups = [
 		title: 'Components',
 		items: [
 			{
+				key: 'widgets',
 				title: 'Widgets',
 				copy: 'Render dynamic storefront components powered by APIEase requests without exposing backend logic or credentials.',
 				href: 'https://docs.apiease.com/docs/widgets/widgets-overview',
 			},
 			{
+				key: 'functions',
 				title: 'Functions',
 				copy: 'Reuse modular Liquid logic across requests to simplify complex workflows and storefront processes.',
 				href: 'https://docs.apiease.com/docs/functions/functions-overview',
 			},
 			{
+				key: 'variables',
 				title: 'Variables',
 				copy: 'Store persistent values used across requests and workflows, including sensitive backend only data.',
 				href: 'https://docs.apiease.com/docs/variables/variables-overview',
@@ -170,16 +177,46 @@ const useCases = [
 												aria-label={`View ${item.title} documentation`}
 											>
 												<div class={`icon icon-${group.key}`}>
-													{group.key === 'requests' ? (
+													{item.key === 'http' ? (
 														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
-															<path d="M4 11h9V8l7 4-7 4v-3H4z" fill="currentColor" />
+															<rect x="4" y="6" width="16" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+															<path d="M8 10h8M8 14h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
 														</svg>
-													) : (
+													) : item.key === 'flow' ? (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<circle cx="7" cy="7" r="2" fill="currentColor" />
+															<circle cx="17" cy="12" r="2" fill="currentColor" />
+															<circle cx="7" cy="17" r="2" fill="currentColor" />
+															<path d="M9 7h3a3 3 0 0 1 3 3v0M9 17h3a3 3 0 0 0 3-3v0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+														</svg>
+													) : item.key === 'liquid' ? (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<path d="M12 4c2.8 3 4.5 5.2 4.5 8a4.5 4.5 0 1 1-9 0c0-2.8 1.7-5 4.5-8Z" fill="currentColor" />
+															<path d="M9 16c.8.7 1.8 1 3 1s2.2-.3 3-1" fill="none" stroke="#0f1422" stroke-width="2" stroke-linecap="round" />
+														</svg>
+													) : item.key === 'system' ? (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<path d="M6 7h12M6 12h12M6 17h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+															<circle cx="9" cy="7" r="2" fill="currentColor" />
+															<circle cx="15" cy="12" r="2" fill="currentColor" />
+															<circle cx="11" cy="17" r="2" fill="currentColor" />
+														</svg>
+													) : item.key === 'widgets' ? (
 														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
 															<rect x="4" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
 															<rect x="13" y="4" width="7" height="7" rx="1.5" fill="currentColor" />
 															<rect x="4" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
 															<rect x="13" y="13" width="7" height="7" rx="1.5" fill="currentColor" />
+														</svg>
+													) : item.key === 'functions' ? (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<path d="M9 6H15M12 6v12m-4 0h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+															<path d="M7 10a4 4 0 1 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+														</svg>
+													) : (
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-svg">
+															<path d="M6 7.5A2.5 2.5 0 0 1 8.5 5H15.5A2.5 2.5 0 0 1 18 7.5v9A2.5 2.5 0 0 1 15.5 19H8.5A2.5 2.5 0 0 1 6 16.5Z" fill="none" stroke="currentColor" stroke-width="2" />
+															<path d="M9 9h6M9 12h6M9 15h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
 														</svg>
 													)}
 												</div>
